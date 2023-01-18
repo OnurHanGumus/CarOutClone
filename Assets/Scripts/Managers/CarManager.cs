@@ -56,6 +56,8 @@ namespace Managers
             CoreGameSignals.Instance.onLevelFailed += _movementController.OnLevelFailed;
             CoreGameSignals.Instance.onRestartLevel += _movementController.OnRestartLevel;
             CoreGameSignals.Instance.onRestartLevel += OnResetLevel;
+
+            InputSignals.Instance.onInputDragged += _movementController.OnInputDragged;
         }
 
         private void UnsubscribeEvents()
@@ -66,6 +68,9 @@ namespace Managers
             CoreGameSignals.Instance.onLevelFailed -= _movementController.OnLevelFailed;
             CoreGameSignals.Instance.onRestartLevel -= _movementController.OnRestartLevel;
             CoreGameSignals.Instance.onRestartLevel -= OnResetLevel;
+
+            InputSignals.Instance.onInputDragged -= _movementController.OnInputDragged;
+
         }
 
 

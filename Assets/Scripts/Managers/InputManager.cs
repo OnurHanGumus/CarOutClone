@@ -21,7 +21,7 @@ namespace Managers
 
         #region Serialized Variables
 
-        //[SerializeField] FloatingJoystick joystick; //SimpleJoystick paketi eklenmeli
+        [SerializeField] FloatingJoystick joystick; //SimpleJoystick paketi eklenmeli
 
 
         #endregion
@@ -33,6 +33,7 @@ namespace Managers
         private Vector2? _mousePosition; //ref type
         private Vector3 _moveVector; //ref type
         private bool _isPlayerDead = false;
+        private Ray _ray;
 
         #endregion
 
@@ -85,16 +86,22 @@ namespace Managers
         {
             if (Input.GetMouseButton(0))
             {
-                if (_isPlayerDead)
+                _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+                RaycastHit hit;
+                if (Physics.Raycast(_ray, out hit))
                 {
-                    return;
+                    if (!hit.collider.CompareTag("Car"))
+                    {
+                        return;
+                    }
                 }
-                //InputSignals.Instance.onInputDragged?.Invoke(new InputParams() //Joystick eklenince aç
-                //{
-                //    XValue = joystick.Horizontal,
-                //    ZValue = joystick.Vertical
-                //    //ClampValues = new Vector2(Data.ClampSides.x, Data.ClampSides.y)
-                //});
+                InputSignals.Instance.onInputDragged?.Invoke(new InputParams() //Joystick eklenince aç
+                {
+                    XValue = joystick.Horizontal,
+                    ZValue = joystick.Vertical,
+                    CarTransform = hit.transform,
+                });
             }
 
             if (Input.GetMouseButtonUp(0))

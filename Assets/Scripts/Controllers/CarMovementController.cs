@@ -1,4 +1,5 @@
 using Data.ValueObject;
+using Keys;
 using Managers;
 using UnityEngine;
 
@@ -16,6 +17,7 @@ namespace Controllers
         private CarData _data;
 
         private bool _isNotStarted = true;
+        private bool _isVertical = false;
 
         #endregion
         #endregion
@@ -30,12 +32,13 @@ namespace Controllers
             _rig = GetComponent<Rigidbody>();
             _manager = GetComponent<CarManager>();
             _data = _manager.GetData();
+            _isVertical = (transform.eulerAngles.y == 0) || (transform.eulerAngles.y == 180);
         }
 
 
         private void FixedUpdate()
         {
-            Move();
+            //Move();
         }
 
 
@@ -50,9 +53,23 @@ namespace Controllers
             _rig.velocity = new Vector3(_rig.velocity.x, _rig.velocity.y, _data.Speed);
         }
 
-        public void OnClicked()
+        public void OnInputDragged(InputParams inputParams)
         {
+            if (!inputParams.CarTransform == transform)
+            {
+                return;
+            }
+            if (_isVertical)
+            {
+                Debug.Log(inputParams.ZValue);
+                _rig.AddRelativeForce(Vector3.forward * inputParams.ZValue, ForceMode.Impulse);
+            }
+            else
+            {
+                Debug.Log(inputParams.XValue);
+                _rig.AddRelativeForce(Vector3.forward * inputParams.XValue, ForceMode.Impulse);
 
+            }
         }
 
         public void OnReleased()
@@ -63,8 +80,6 @@ namespace Controllers
         public void OnPlay()
         {
             _isNotStarted = false;
-
-
         }
         public void OnLevelFailed()
         {
