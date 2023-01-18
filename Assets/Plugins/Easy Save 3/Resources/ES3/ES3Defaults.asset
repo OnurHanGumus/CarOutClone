@@ -31,7 +31,11 @@ MonoBehaviour:
     assemblyNames:
     - Assembly-CSharp
     - Assembly-CSharp-firstpass
+    - Dreamteck.Splines
+    - Dreamteck.Utilities
     - PPv2URPConverters
+    - Dreamteck.Splines.Editor
+    - Dreamteck.Utilities.Editor
     showAdvancedSettings: 0
   addMgrToSceneAutomatically: 0
   autoUpdateReferences: 1
