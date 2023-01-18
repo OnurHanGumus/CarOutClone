@@ -96,6 +96,7 @@ namespace Managers
                         return;
                     }
                 }
+                Debug.Log(hit.transform.name);
                 InputSignals.Instance.onInputDragged?.Invoke(new InputParams() //Joystick eklenince aç
                 {
                     XValue = joystick.Horizontal,

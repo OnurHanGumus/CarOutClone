@@ -32,7 +32,10 @@ public class CarPhysicsController : MonoBehaviour
             _isOutOfWay = true;
             _follower = transform.parent.gameObject.AddComponent<SplineFollower>();
             _follower.spline = _spline;
-            _follower.followSpeed = 5;
+            _follower.followSpeed = 10;
+            _follower.updateMethod = SplineUser.UpdateMethod.FixedUpdate;
+            _follower.physicsMode = SplineTracer.PhysicsMode.Rigidbody;
+            
         }
     }
 }

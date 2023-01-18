@@ -55,7 +55,7 @@ namespace Controllers
 
         public void OnInputDragged(InputParams inputParams)
         {
-            if (!inputParams.CarTransform == transform)
+            if (!(inputParams.CarTransform == transform))
             {
                 return;
             }
