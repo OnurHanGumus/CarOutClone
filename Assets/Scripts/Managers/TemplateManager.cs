@@ -23,7 +23,7 @@ namespace Managers
         #endregion
 
         #region Private Variables
-        private PlayerData _data;
+        private CarData _data;
         #endregion
 
         #endregion
@@ -37,7 +37,7 @@ namespace Managers
         {
             _data = GetData();
         }
-        public PlayerData GetData() => Resources.Load<CD_Player>("Data/CD_Player").Data;
+        public CarData GetData() => Resources.Load<CD_Car>("Data/CD_Player").Data;
 
         #region Event Subscription
 

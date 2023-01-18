@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Managers
 {
-    public class PlayerManager : MonoBehaviour
+    public class CarManager : MonoBehaviour
     {
         #region Self Variables
 
@@ -23,9 +23,8 @@ namespace Managers
         #endregion
 
         #region Private Variables
-        private PlayerData _data;
-        private PlayerMovementController _movementController;
-        private List<int> _playerUpgradeList;
+        private CarData _data;
+        private CarMovementController _movementController;
         #endregion
 
         #endregion
@@ -38,9 +37,9 @@ namespace Managers
         private void Init()
         {
             _data = GetData();
-            _movementController = GetComponent<PlayerMovementController>();
+            _movementController = GetComponent<CarMovementController>();
         }
-        public PlayerData GetData() => Resources.Load<CD_Player>("Data/CD_Player").Data;
+        public CarData GetData() => Resources.Load<CD_Car>("Data/CD_Car").Data;
 
         #region Event Subscription
 
@@ -80,10 +79,6 @@ namespace Managers
         {
         }
 
-        private void OnInitializePlayerUpgrades(List<int> upgradeList)
-        {
-            _playerUpgradeList = upgradeList;
-        }
 
 
         private void OnResetLevel()

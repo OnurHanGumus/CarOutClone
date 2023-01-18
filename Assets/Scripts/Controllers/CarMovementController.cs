@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Controllers
 {
-    public class PlayerMovementController : MonoBehaviour
+    public class CarMovementController : MonoBehaviour
     {
         #region Self Variables
 
@@ -12,8 +12,8 @@ namespace Controllers
         #endregion
         #region Private Variables
         private Rigidbody _rig;
-        private PlayerManager _manager;
-        private PlayerData _data;
+        private CarManager _manager;
+        private CarData _data;
 
         private bool _isNotStarted = true;
 
@@ -28,7 +28,7 @@ namespace Controllers
         private void Init()
         {
             _rig = GetComponent<Rigidbody>();
-            _manager = GetComponent<PlayerManager>();
+            _manager = GetComponent<CarManager>();
             _data = _manager.GetData();
         }
 
@@ -63,7 +63,6 @@ namespace Controllers
         public void OnPlay()
         {
             _isNotStarted = false;
-            _rig.useGravity = true;
 
 
         }
@@ -71,14 +70,12 @@ namespace Controllers
         {
             _rig.angularVelocity = Vector3.zero;
             _rig.velocity = Vector3.zero;
-            _rig.useGravity = false;
 
         }
         public void OnLevelSuccess()
         {
             _rig.angularVelocity = Vector3.zero;
             _rig.velocity = Vector3.zero;
-            _rig.useGravity = false;
         }
         public void OnRestartLevel()
         {
