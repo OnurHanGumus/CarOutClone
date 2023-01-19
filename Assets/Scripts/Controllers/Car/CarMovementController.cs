@@ -20,8 +20,8 @@ namespace Controllers
 
         private bool _isNotStarted = true;
         private bool _isVertical = false;
-
         private bool _isClicked = false;
+
         #endregion
         #endregion
 
@@ -45,14 +45,8 @@ namespace Controllers
             {
                 return;
             }
-            if (_isVertical)
-            {
-                Move(Vector3.forward * _inputParams.ZValue);
-            }
-            else
-            {
-                Move(Vector3.forward * _inputParams.XValue);
-            }
+
+            Move(Vector3.forward * (_isVertical? _inputParams.ZValue : _inputParams.XValue));
         }
 
 
@@ -65,26 +59,33 @@ namespace Controllers
             }
             if (_manager.IsCarCrashed)
             {
-                _rig.velocity = Vector3.zero;
+                _inputParams = new InputParams() { XValue = 0, ZValue = 0 };
+                _manager.IsCarCrashed = false;
+                _rig.mass = 1000;
+                return;
             }
-            _rig.AddRelativeForce(forceDirection * 100, ForceMode.Force);
-            
+            _rig.mass = 1;
+            _rig.velocity = transform.TransformDirection(forceDirection * _data.Speed);
         }
 
         public void OnInputDragged(InputParams inputParams)
         {
-
             if (!(inputParams.CarTransform == transform))
             {
                 return;
             }
+            if (new Vector2(inputParams.XValue, inputParams.ZValue).magnitude < 0.5f)
+            {
+                return;
+            }
+            Debug.Log(transform.name);
             _isClicked = true;
             _inputParams = inputParams;
         }
 
         public void OnReleased()
         {
-            _isClicked = false; //Waiting
+            
         }
 
 

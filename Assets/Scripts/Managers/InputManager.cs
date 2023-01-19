@@ -34,6 +34,7 @@ namespace Managers
         private Vector3 _moveVector; //ref type
         private bool _isPlayerDead = false;
         private Ray _ray;
+        private Transform _carTransform;
 
         #endregion
 
@@ -42,11 +43,17 @@ namespace Managers
 
         private void Awake()
         {
-            Data = GetInputData();
+            Init();
         }
+
 
         private InputData GetInputData() => Resources.Load<CD_Input>("Data/CD_Input").Data;
 
+        private void Init()
+        {
+            Data = GetInputData();
+            _carTransform = transform;
+        }
 
         #region Event Subscriptions
 
@@ -84,7 +91,7 @@ namespace Managers
 
         private void Update()
         {
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButtonDown(0))
             {
                 _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -97,14 +104,18 @@ namespace Managers
                     {
                         return;
                     }
-                    Debug.Log(hit.transform.name);
+                    _carTransform = hit.transform;
 
                 }
-                InputSignals.Instance.onInputDragged?.Invoke(new InputParams() //Joystick eklenince aç
+            }
+            if (Input.GetMouseButton(0))
+            {
+                
+                InputSignals.Instance.onInputDragged?.Invoke(new InputParams()
                 {
                     XValue = joystick.Horizontal,
                     ZValue = joystick.Vertical,
-                    CarTransform = hit.transform,
+                    CarTransform = _carTransform.transform,
                 });
             }
 
