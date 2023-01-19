@@ -110,11 +110,12 @@ namespace Managers
 
             if (Input.GetMouseButtonUp(0))
             {
-                InputSignals.Instance.onInputDragged?.Invoke(new InputParams()
-                {
-                    XValue = 0,
-                    ZValue = 0
-                });
+                //InputSignals.Instance.onInputDragged?.Invoke(new InputParams()
+                //{
+                //    XValue = 0,
+                //    ZValue = 0
+                //});
+                InputSignals.Instance.onInputReleased?.Invoke();
             }
 
         }

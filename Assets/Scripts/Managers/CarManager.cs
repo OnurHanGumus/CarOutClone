@@ -15,7 +15,7 @@ namespace Managers
         #region Self Variables
 
         #region Public Variables
-
+        public bool IsCarCrashed = false;
         #endregion
 
         #region Serialized Variables
@@ -58,6 +58,7 @@ namespace Managers
             CoreGameSignals.Instance.onRestartLevel += OnResetLevel;
 
             InputSignals.Instance.onInputDragged += _movementController.OnInputDragged;
+            InputSignals.Instance.onInputReleased += _movementController.OnReleased;
         }
 
         private void UnsubscribeEvents()
@@ -70,6 +71,7 @@ namespace Managers
             CoreGameSignals.Instance.onRestartLevel -= OnResetLevel;
 
             InputSignals.Instance.onInputDragged -= _movementController.OnInputDragged;
+            InputSignals.Instance.onInputReleased -= _movementController.OnReleased;
 
         }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Dreamteck.Splines;
 using Signals;
+using Managers;
 
 public class CarPhysicsController : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class CarPhysicsController : MonoBehaviour
     #region Public Variables
     #endregion
     #region SerializeField Variables
+    [SerializeField] private CarManager carManager;
     #endregion
     #region Private Variables
     private SplineComputer _spline;
@@ -21,6 +23,13 @@ public class CarPhysicsController : MonoBehaviour
     private void Start()
     {
         _spline = SplineSignals.Instance.onGetSpline();
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Car"))
+        {
+            carManager.IsCarCrashed = true;
+        }
     }
     private void OnTriggerExit(Collider other)
     {
@@ -38,10 +47,13 @@ public class CarPhysicsController : MonoBehaviour
             _follower.followSpeed = 10;
             _follower.updateMethod = SplineUser.UpdateMethod.FixedUpdate;
             _follower.physicsMode = SplineTracer.PhysicsMode.Rigidbody;
-            
 
             _follower.SetClipRange(_sample.percent, 1d);
 
+        }
+        else if (other.CompareTag("Car"))
+        {
+            carManager.IsCarCrashed = false;
         }
     }
 }

@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 1929823949999006738}
   m_Layer: 0
   m_Name: Physics
-  m_TagString: Untagged
+  m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -223,7 +223,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 1.8, z: 4}
+  m_Size: {x: 2.1, y: 2, z: 4.1}
   m_Center: {x: 0, y: 0.9241726, z: 0.032016277}
 --- !u!114 &1929823949999006738
 MonoBehaviour:
@@ -237,6 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a501df1f984e1be499dfe03ffbaeb1e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carManager: {fileID: 7007752195420925855}
 --- !u!1 &5846091932294208146
 GameObject:
   m_ObjectHideFlags: 0
@@ -715,6 +716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a92571e218307448474999447d2353, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsCarCrashed: 0
 --- !u!114 &7007752195420925852
 MonoBehaviour:
   m_ObjectHideFlags: 0

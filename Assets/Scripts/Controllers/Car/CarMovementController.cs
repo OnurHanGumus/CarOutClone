@@ -16,9 +16,12 @@ namespace Controllers
         private CarManager _manager;
         private CarData _data;
 
+        private InputParams _inputParams;
+
         private bool _isNotStarted = true;
         private bool _isVertical = false;
 
+        private bool _isClicked = false;
         #endregion
         #endregion
 
@@ -38,42 +41,50 @@ namespace Controllers
 
         private void FixedUpdate()
         {
-            //Move();
-        }
-
-
-
-        private void Move()
-        {
-            if (_isNotStarted)
-            {
-                return;
-            }
-
-            _rig.velocity = new Vector3(_rig.velocity.x, _rig.velocity.y, _data.Speed);
-        }
-
-        public void OnInputDragged(InputParams inputParams)
-        {
-            if (!(inputParams.CarTransform == transform))
+            if (!_isClicked)
             {
                 return;
             }
             if (_isVertical)
             {
-                Debug.Log(inputParams.ZValue);
-                _rig.AddRelativeForce(Vector3.forward * inputParams.ZValue, ForceMode.Impulse);
+                Move(Vector3.forward * _inputParams.ZValue);
             }
             else
             {
-                Debug.Log(inputParams.XValue);
-                _rig.AddRelativeForce(Vector3.forward * inputParams.XValue, ForceMode.Impulse);
-
+                Move(Vector3.forward * _inputParams.XValue);
             }
+        }
+
+
+
+        private void Move(Vector3 forceDirection)
+        {
+            if (_isNotStarted)
+            {
+                return;
+            }
+            if (_manager.IsCarCrashed)
+            {
+                _rig.velocity = Vector3.zero;
+            }
+            _rig.AddRelativeForce(forceDirection * 100, ForceMode.Force);
+            
+        }
+
+        public void OnInputDragged(InputParams inputParams)
+        {
+
+            if (!(inputParams.CarTransform == transform))
+            {
+                return;
+            }
+            _isClicked = true;
+            _inputParams = inputParams;
         }
 
         public void OnReleased()
         {
+            _isClicked = false; //Waiting
         }
 
 
