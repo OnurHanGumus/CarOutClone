@@ -15,6 +15,7 @@ public class CarPhysicsController : MonoBehaviour
     private SplineComputer _spline;
     private SplineFollower _follower;
     private bool _isOutOfWay = false;
+    private SplineSample _sample;
     #endregion
     #endregion
     private void Start()
@@ -29,6 +30,8 @@ public class CarPhysicsController : MonoBehaviour
         }
         if (other.CompareTag("Platform"))
         {
+            _spline.Project(transform.position, ref _sample);
+
             _isOutOfWay = true;
             _follower = transform.parent.gameObject.AddComponent<SplineFollower>();
             _follower.spline = _spline;
@@ -36,6 +39,9 @@ public class CarPhysicsController : MonoBehaviour
             _follower.updateMethod = SplineUser.UpdateMethod.FixedUpdate;
             _follower.physicsMode = SplineTracer.PhysicsMode.Rigidbody;
             
+
+            _follower.SetClipRange(_sample.percent, 1d);
+
         }
     }
 }

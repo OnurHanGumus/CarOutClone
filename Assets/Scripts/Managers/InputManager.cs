@@ -89,14 +89,17 @@ namespace Managers
                 _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
                 RaycastHit hit;
+
                 if (Physics.Raycast(_ray, out hit))
                 {
+
                     if (!hit.collider.CompareTag("Car"))
                     {
                         return;
                     }
+                    Debug.Log(hit.transform.name);
+
                 }
-                Debug.Log(hit.transform.name);
                 InputSignals.Instance.onInputDragged?.Invoke(new InputParams() //Joystick eklenince aç
                 {
                     XValue = joystick.Horizontal,
