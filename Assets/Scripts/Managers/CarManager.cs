@@ -82,6 +82,11 @@ namespace Managers
         }
 
         #endregion
+
+        private void Start()
+        {
+            CarSignals.Instance.onIncreaseTotalCarCount?.Invoke();
+        }
         private void OnPlay()
         {
         }

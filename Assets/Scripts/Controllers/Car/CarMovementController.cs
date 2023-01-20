@@ -21,6 +21,7 @@ namespace Controllers
         private bool _isNotStarted = true;
         private bool _isVertical = false;
         private bool _isClicked = false;
+        private bool _isPositiveRotation = false;
 
         #endregion
         #endregion
@@ -36,6 +37,7 @@ namespace Controllers
             _manager = GetComponent<CarManager>();
             _data = _manager.GetData();
             _isVertical = (transform.eulerAngles.y == 0) || (transform.eulerAngles.y == 180);
+            _isPositiveRotation = (transform.eulerAngles.y == 0) || (transform.eulerAngles.y == 90);
         }
 
 
@@ -65,7 +67,7 @@ namespace Controllers
                 return;
             }
             _rig.mass = 1;
-            _rig.velocity = transform.TransformDirection(forceDirection * _data.Speed);
+            _rig.velocity = transform.TransformDirection(forceDirection * _data.Speed * (_isPositiveRotation? 1 : -1));
         }
 
         public void OnInputDragged(InputParams inputParams)
@@ -78,7 +80,6 @@ namespace Controllers
             {
                 return;
             }
-            Debug.Log(transform.name);
             _isClicked = true;
             _inputParams = inputParams;
         }
