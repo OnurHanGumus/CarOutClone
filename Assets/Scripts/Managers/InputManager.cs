@@ -67,7 +67,7 @@ namespace Managers
             InputSignals.Instance.onEnableInput += OnEnableInput;
             InputSignals.Instance.onDisableInput += OnDisableInput;
             CoreGameSignals.Instance.onPlay += OnPlay;
-            CoreGameSignals.Instance.onReset += OnReset;
+            CoreGameSignals.Instance.onRestartLevel += OnRestartLevel;
             //PlayerSignals.Instance.onPlayerDie += OnChangePlayerLivingState;  //Ölüþ animasyonu sýrasýnda playeri hareket ettiremememiz için varlar.
             //PlayerSignals.Instance.onPlayerSpawned += OnChangePlayerLivingState;
         }
@@ -77,7 +77,7 @@ namespace Managers
             InputSignals.Instance.onEnableInput -= OnEnableInput;
             InputSignals.Instance.onDisableInput -= OnDisableInput;
             CoreGameSignals.Instance.onPlay -= OnPlay;
-            CoreGameSignals.Instance.onReset -= OnReset;
+            CoreGameSignals.Instance.onRestartLevel -= OnRestartLevel;
             //PlayerSignals.Instance.onPlayerDie -= OnChangePlayerLivingState;
             //PlayerSignals.Instance.onPlayerSpawned -= OnChangePlayerLivingState;
         }
@@ -155,8 +155,9 @@ namespace Managers
         //    return results.Count > 0;
         //}
 
-        private void OnReset()
+        private void OnRestartLevel()
         {
+            _carTransform = transform;
         }
 
         private void OnChangePlayerLivingState()
