@@ -29,6 +29,7 @@ public class EndLinePhysicsController : MonoBehaviour
             if (_counter == manager.TotalCarCount)
             {
                 CoreGameSignals.Instance.onLevelSuccessful?.Invoke();
+                ScoreSignals.Instance.onScoreIncrease?.Invoke(Enums.ScoreTypeEnums.Money, _counter * 5);
             }
         }
     }

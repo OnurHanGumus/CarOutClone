@@ -471,6 +471,7 @@ MonoBehaviour:
   levelPanelController: {fileID: 1589092165}
   highScorePanelController: {fileID: 6962386289050533000}
   pausePanelController: {fileID: 4214176657787478026}
+  winPanelController: {fileID: 343995649}
 --- !u!1 &104751525
 GameObject:
   m_ObjectHideFlags: 0
@@ -1491,6 +1492,7 @@ GameObject:
   m_Component:
   - component: {fileID: 343995647}
   - component: {fileID: 343995648}
+  - component: {fileID: 343995649}
   m_Layer: 0
   m_Name: WinPanel
   m_TagString: Untagged
@@ -1536,6 +1538,20 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!114 &343995649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343995646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8565fa1ef4d9ed84986a31dffac5a844, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moneyText: {fileID: 1390395664}
+  increasedMoneyText: {fileID: 2055936928}
 --- !u!1 &375450930
 GameObject:
   m_ObjectHideFlags: 0

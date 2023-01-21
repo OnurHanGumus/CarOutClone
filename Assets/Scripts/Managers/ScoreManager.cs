@@ -38,7 +38,9 @@ namespace Managers
         public int Money
         {
             get { return _money; }
-            set { _money = value; }
+            set { _money = value;
+                SaveSignals.Instance.onSaveScore?.Invoke(Money, SaveLoadStates.Money, SaveFiles.SaveFile);
+}
         }
 
 
@@ -91,8 +93,8 @@ namespace Managers
         }
         private void OnScoreIncrease(ScoreTypeEnums type, int amount)
         {
-            Score += amount;
-            UISignals.Instance.onSetChangedText?.Invoke(type, Score);
+            Money += amount;
+            UISignals.Instance.onSetChangedText?.Invoke(type, amount);
         }
 
         private void OnScoreDecrease(ScoreTypeEnums type, int amount)
