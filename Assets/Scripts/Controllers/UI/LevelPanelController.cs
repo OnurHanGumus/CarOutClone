@@ -14,32 +14,27 @@ public class LevelPanelController : MonoBehaviour
     #region Public Variables
     #endregion
     #region SerializeField Variables
-    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI levelText;
     #endregion
     #region Private Variables
 
 
     #endregion
     #endregion
-    private void Awake()
+    public void OnPlay()
     {
-        Init();
+        GetLevel();
     }
-    private void Init()
-    {
 
 
-    }
-    public void OnScoreUpdateText(ScoreTypeEnums type, int score)
+    private void GetLevel()
     {
-        if (type.Equals(ScoreTypeEnums.Score))
-        {
-            scoreText.text = score.ToString();
-        }
+        levelText.text = "Level " + LevelSignals.Instance.onGetLevelId?.Invoke();
+
     }
 
     public void OnRestartLevel()
     {
-        scoreText.text = 0.ToString();
+        
     }
 }
