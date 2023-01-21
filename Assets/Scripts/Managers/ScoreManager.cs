@@ -34,6 +34,13 @@ namespace Managers
             get { return _score; }
             set { _score = value; }
         }
+        private int _money;
+        public int Money
+        {
+            get { return _money; }
+            set { _money = value; }
+        }
+
 
 
         #endregion
@@ -59,7 +66,7 @@ namespace Managers
         {
             ScoreSignals.Instance.onScoreIncrease += OnScoreIncrease;
             ScoreSignals.Instance.onScoreDecrease += OnScoreDecrease;
-            ScoreSignals.Instance.onGetScore += OnGetScore;
+            ScoreSignals.Instance.onGetMoney += OnGetMoney;
             CoreGameSignals.Instance.onRestartLevel += OnRestartLevel;
         }
 
@@ -67,7 +74,7 @@ namespace Managers
         {
             ScoreSignals.Instance.onScoreIncrease -= OnScoreIncrease;
             ScoreSignals.Instance.onScoreDecrease -= OnScoreDecrease;
-            ScoreSignals.Instance.onGetScore -= OnGetScore;
+            ScoreSignals.Instance.onGetMoney -= OnGetMoney;
             CoreGameSignals.Instance.onRestartLevel -= OnRestartLevel;
         }
 
@@ -78,6 +85,10 @@ namespace Managers
 
         #endregion
 
+        private void Start()
+        {
+            Money = SaveSignals.Instance.onGetScore(SaveLoadStates.Money, SaveFiles.SaveFile);
+        }
         private void OnScoreIncrease(ScoreTypeEnums type, int amount)
         {
             Score += amount;
@@ -86,13 +97,14 @@ namespace Managers
 
         private void OnScoreDecrease(ScoreTypeEnums type, int amount)
         {
-
+            Score -= amount;
+            UISignals.Instance.onSetChangedText?.Invoke(type, Score);
         }
 
 
-        private int OnGetScore()
+        private int OnGetMoney()
         {
-            return Score;
+            return Money;
         }
 
         private void OnRestartLevel()
