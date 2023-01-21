@@ -33,9 +33,13 @@ MonoBehaviour:
     - Dreamteck.Utilities
     - Dreamteck.Splines
     - Assembly-CSharp
+    - ToonyColorsPro2.Demo
+    - ToonyColorsPro.Runtime
     - Dreamteck.Splines.Editor
     - PPv2URPConverters
+    - ToonyColorsPro.Editor
     - Dreamteck.Utilities.Editor
+    - ToonyColorsPro.Demo.Editor
     showAdvancedSettings: 0
   addMgrToSceneAutomatically: 0
   autoUpdateReferences: 1
