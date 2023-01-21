@@ -30,6 +30,10 @@ public class CarPhysicsController : MonoBehaviour
         {
             carManager.IsCarCrashed = true;
         }
+        else if (other.CompareTag("OldMan"))
+        {
+            CoreGameSignals.Instance.onLevelFailed?.Invoke();
+        }
     }
     private void OnTriggerExit(Collider other)
     {

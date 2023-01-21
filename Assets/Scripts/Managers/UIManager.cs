@@ -103,7 +103,7 @@ namespace Managers
         private void OnLevelFailed()
         {
             UISignals.Instance.onClosePanel?.Invoke(UIPanels.LevelPanel);
-            UISignals.Instance.onOpenPanel?.Invoke(UIPanels.GameOverPanel);
+            UISignals.Instance.onOpenPanel?.Invoke(UIPanels.FailPanel);
             gameOverPanelController.ShowThePanel();
         }
 
