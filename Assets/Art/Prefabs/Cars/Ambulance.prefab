@@ -277,7 +277,7 @@ GameObject:
   - component: {fileID: 5275798394928772092}
   m_Layer: 0
   m_Name: Ambulance
-  m_TagString: Untagged
+  m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -340,7 +340,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a92571e218307448474999447d2353, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsCarCrashed: 0
 --- !u!114 &5275798394928772092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -632,7 +631,7 @@ GameObject:
   - component: {fileID: 3656909043017087090}
   m_Layer: 0
   m_Name: Physics
-  m_TagString: Car
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

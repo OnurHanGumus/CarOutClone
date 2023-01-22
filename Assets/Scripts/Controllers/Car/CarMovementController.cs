@@ -59,10 +59,7 @@ namespace Controllers
             {
                 return;
             }
-            //if (_manager.IsCarCrashed)
-            //{
-            //    return;
-            //}
+
             _rig.mass = 1;
             _rig.velocity = transform.TransformDirection(forceDirection * _data.Speed * (_isPositiveRotation? 1 : -1));
         }

@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 4777755495441326220}
   m_Layer: 0
   m_Name: Physics
-  m_TagString: Car
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -253,7 +253,7 @@ GameObject:
   - component: {fileID: 4162850637711616770}
   m_Layer: 0
   m_Name: Hatchback
-  m_TagString: Untagged
+  m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -316,7 +316,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a92571e218307448474999447d2353, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsCarCrashed: 0
 --- !u!114 &4162850637711616770
 MonoBehaviour:
   m_ObjectHideFlags: 0

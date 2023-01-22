@@ -28,13 +28,9 @@ namespace Managers
 
         #region Private Variables
 
-
-        private float _currentVelocity; //ref type
-        private Vector2? _mousePosition; //ref type
-        private Vector3 _moveVector; //ref type
         private bool _isPlayerDead = false;
         private Ray _ray;
-        private Transform _carTransform;
+        private Transform _clickedTransform;
 
         #endregion
 
@@ -52,7 +48,7 @@ namespace Managers
         private void Init()
         {
             Data = GetInputData();
-            _carTransform = transform;
+            _clickedTransform = transform;
         }
 
         #region Event Subscriptions
@@ -99,23 +95,20 @@ namespace Managers
 
                 if (Physics.Raycast(_ray, out hit))
                 {
-
-                    if (!hit.collider.CompareTag("Car"))
-                    {
-                        return;
-                    }
-                    _carTransform = hit.transform;
-
+                    _clickedTransform = hit.transform;
                 }
             }
             if (Input.GetMouseButton(0))
             {
-                
+                if (!_clickedTransform.gameObject.CompareTag("Car"))
+                {
+                    return;
+                }
                 InputSignals.Instance.onInputDragged?.Invoke(new InputParams()
                 {
                     XValue = joystick.Horizontal,
                     ZValue = joystick.Vertical,
-                    CarTransform = _carTransform.transform,
+                    CarTransform = _clickedTransform.transform,
                 });
             }
 
@@ -157,7 +150,7 @@ namespace Managers
 
         private void OnRestartLevel()
         {
-            _carTransform = transform;
+            _clickedTransform = transform;
         }
 
         private void OnChangePlayerLivingState()
