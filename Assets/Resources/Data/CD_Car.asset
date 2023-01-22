@@ -16,3 +16,4 @@ MonoBehaviour:
     Speed: 10
     InitializePosX: 0
     InitializePosY: 0
+    CarMoveTreshold: 1

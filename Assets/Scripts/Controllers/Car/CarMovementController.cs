@@ -20,6 +20,7 @@ namespace Controllers
 
         private bool _isNotStarted = true;
         private bool _isVertical = false;
+        private bool _isMoveable = false;
         private bool _isClicked = false;
         private bool _isPositiveRotation = false;
 
@@ -43,7 +44,7 @@ namespace Controllers
 
         private void FixedUpdate()
         {
-            if (!_isClicked)
+            if (!_isMoveable)
             {
                 return;
             }
@@ -66,27 +67,37 @@ namespace Controllers
 
         public void CarCrashed()
         {
+            _isMoveable = false;
             _isClicked = false;
             _rig.mass = 1000;
         }
 
-        public void OnInputDragged(InputParams inputParams)
+        public void OnClicked(Transform clickedTransform)
         {
-            if (!(inputParams.CarTransform == transform))
-            {
-                return;
-            }
-            if (new Vector2(inputParams.XValue, inputParams.ZValue).magnitude < 0.5f)
+            if (!(clickedTransform == transform))
             {
                 return;
             }
             _isClicked = true;
+        }
+
+        public void OnInputDragged(InputParams inputParams)
+        {
+            if (!_isClicked)
+            {
+                return;
+            }
+            if (new Vector2(inputParams.XValue, inputParams.ZValue).magnitude < _data.CarMoveTreshold)
+            {
+                return;
+            }
+            _isMoveable = true;
             _inputParams = inputParams;
         }
 
         public void OnReleased()
         {
-            
+            _isClicked = false;
         }
 
 
@@ -110,7 +121,6 @@ namespace Controllers
             _isNotStarted = true;
             _rig.angularVelocity = Vector3.zero;
             _rig.velocity = Vector3.zero;
-            //_isNotStarted = true;
             transform.position = new Vector3(_data.InitializePosX, _data.InitializePosY);
             transform.eulerAngles = Vector3.zero;
         }

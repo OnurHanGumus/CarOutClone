@@ -8,5 +8,6 @@ namespace Data.ValueObject
     {
         public float Speed = 5;
         public int InitializePosX, InitializePosY;
+        public float CarMoveTreshold = 0.8f;
     }
 }

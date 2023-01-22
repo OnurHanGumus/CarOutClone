@@ -69,6 +69,7 @@ namespace Managers
             CoreGameSignals.Instance.onRestartLevel += OnResetLevel;
 
             InputSignals.Instance.onInputDragged += _movementController.OnInputDragged;
+            InputSignals.Instance.onClicked += _movementController.OnClicked;
             InputSignals.Instance.onInputReleased += _movementController.OnReleased;
         }
 
@@ -82,6 +83,7 @@ namespace Managers
             CoreGameSignals.Instance.onRestartLevel -= OnResetLevel;
 
             InputSignals.Instance.onInputDragged -= _movementController.OnInputDragged;
+            InputSignals.Instance.onClicked -= _movementController.OnClicked;
             InputSignals.Instance.onInputReleased -= _movementController.OnReleased;
 
         }
