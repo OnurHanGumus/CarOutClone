@@ -15,7 +15,18 @@ namespace Managers
         #region Self Variables
 
         #region Public Variables
-        public bool IsCarCrashed = false;
+        //public bool IsCarCrashed = false;
+        private bool _isCarCrashed;
+
+        public bool IsCarCrashed
+        {
+            get { return _isCarCrashed; }
+            set {
+                _isCarCrashed = value;
+                _movementController.CarCrashed();
+            }
+        }
+
         #endregion
 
         #region Serialized Variables

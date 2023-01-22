@@ -55,9 +55,9 @@ public class CarPhysicsController : MonoBehaviour
             _follower.SetClipRange(_sample.percent, 1d);
 
         }
-        else if (other.CompareTag("Car"))
-        {
-            carManager.IsCarCrashed = false;
-        }
+        //else if (other.CompareTag("Car"))
+        //{
+        //    carManager.IsCarCrashed = false;
+        //}
     }
 }

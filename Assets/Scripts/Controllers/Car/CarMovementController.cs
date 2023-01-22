@@ -59,15 +59,18 @@ namespace Controllers
             {
                 return;
             }
-            if (_manager.IsCarCrashed)
-            {
-                _inputParams = new InputParams() { XValue = 0, ZValue = 0 };
-                _manager.IsCarCrashed = false;
-                _rig.mass = 1000;
-                return;
-            }
+            //if (_manager.IsCarCrashed)
+            //{
+            //    return;
+            //}
             _rig.mass = 1;
             _rig.velocity = transform.TransformDirection(forceDirection * _data.Speed * (_isPositiveRotation? 1 : -1));
+        }
+
+        public void CarCrashed()
+        {
+            _isClicked = false;
+            _rig.mass = 1000;
         }
 
         public void OnInputDragged(InputParams inputParams)
