@@ -357,14 +357,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 61282368}
-  m_LocalRotation: {x: 0.43381864, y: -0.207087, z: 0.0434731, w: 0.8758005}
-  m_LocalPosition: {x: 14.5, y: 26, z: -23.2}
+  m_LocalRotation: {x: 0.5410129, y: -0.14676623, z: 0.03340198, w: 0.82743526}
+  m_LocalPosition: {x: 6.9, y: 29.5, z: -12.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 51.067, y: -31.145, z: -9.483}
+  m_LocalEulerAnglesHint: {x: 64.838, y: -29.094, z: -14.093}
 --- !u!114 &61282372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2401,7 +2401,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &735196703
 Transform:
   m_ObjectHideFlags: 0
@@ -2429,10 +2429,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5abcbf0e1b2cb7949b18fbd42a949757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectablePrefab: {fileID: 0}
-  particlePrefab: {fileID: 0}
-  amountCollectables: 50
-  amountParticle: 5
+  particlePrefab: {fileID: 165244, guid: 8f6a3d95cdec3f148b48cc4604a41a59, type: 3}
+  particlePrefab2: {fileID: 186418, guid: 04767b88df8de144897b28444e885973, type: 3}
+  particlePrefab3: {fileID: 156184, guid: 9bcdb1b8180c1394ea37716601148607, type: 3}
+  particlePrefab4: {fileID: 125018, guid: c574b8bf6409ae8478316b2134abf9d1, type: 3}
+  amountParticle: 2
 --- !u!1 &749374685
 GameObject:
   m_ObjectHideFlags: 0

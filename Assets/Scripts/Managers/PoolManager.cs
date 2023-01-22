@@ -10,14 +10,15 @@ public class PoolManager : MonoBehaviour
 
     #region Serialized Variables
 
-    [SerializeField] private GameObject collectablePrefab;
     [SerializeField] private GameObject particlePrefab;
+    [SerializeField] private GameObject particlePrefab2;
+    [SerializeField] private GameObject particlePrefab3;
+    [SerializeField] private GameObject particlePrefab4;
 
     [SerializeField] private Dictionary<PoolEnums, List<GameObject>> poolDictionary;
 
 
-    [SerializeField] private int amountCollectables = 50;
-    [SerializeField] private int amountParticle = 5;
+    [SerializeField] private int amountParticle = 2;
 
 
 
@@ -34,8 +35,11 @@ public class PoolManager : MonoBehaviour
     {
         _levelId = LevelSignals.Instance.onGetCurrentModdedLevel();
         poolDictionary = new Dictionary<PoolEnums, List<GameObject>>();
-        InitializePool(PoolEnums.Collectable, collectablePrefab, amountCollectables);
+
         InitializePool(PoolEnums.Particle, particlePrefab, amountParticle);
+        InitializePool(PoolEnums.Particle2, particlePrefab2, amountParticle);
+        InitializePool(PoolEnums.Particle3, particlePrefab3, amountParticle);
+        InitializePool(PoolEnums.Particle4, particlePrefab4, amountParticle);
     }
 
 
@@ -51,6 +55,7 @@ public class PoolManager : MonoBehaviour
     {
         PoolSignals.Instance.onGetPoolManagerObj += OnGetPoolManagerObj;
         PoolSignals.Instance.onGetObject += OnGetObject;
+        PoolSignals.Instance.onGetObjectOnPosition += OnGetObjectWithFix;
         CoreGameSignals.Instance.onRestartLevel += OnReset;
 
     }
@@ -59,6 +64,7 @@ public class PoolManager : MonoBehaviour
     {
         PoolSignals.Instance.onGetPoolManagerObj -= OnGetPoolManagerObj;
         PoolSignals.Instance.onGetObject -= OnGetObject;
+        PoolSignals.Instance.onGetObjectOnPosition -= OnGetObjectWithFix;
         CoreGameSignals.Instance.onRestartLevel -= OnReset;
 
     }
@@ -96,6 +102,21 @@ public class PoolManager : MonoBehaviour
         return null;
     }
 
+    public GameObject OnGetObjectWithFix(PoolEnums type, Vector3 position)
+    {
+        for (int i = 0; i < poolDictionary[type].Count; i++)
+        {
+            if (!poolDictionary[type][i].activeInHierarchy)
+            {
+                poolDictionary[type][i].transform.position = position;
+                poolDictionary[type][i].gameObject.SetActive(true);
+
+                return poolDictionary[type][i];
+            }
+        }
+        return null;
+    }
+
     public Transform OnGetPoolManagerObj()
     {
         return transform;
@@ -105,8 +126,10 @@ public class PoolManager : MonoBehaviour
     private void OnReset()
     {
         //reset
-        ResetPool(PoolEnums.Collectable);
         ResetPool(PoolEnums.Particle);
+        ResetPool(PoolEnums.Particle2);
+        ResetPool(PoolEnums.Particle3);
+        ResetPool(PoolEnums.Particle4);
     }
 
     private void ResetPool(PoolEnums type)

@@ -30,6 +30,11 @@ public class EndLinePhysicsController : MonoBehaviour
             {
                 CoreGameSignals.Instance.onLevelSuccessful?.Invoke();
                 ScoreSignals.Instance.onScoreIncrease?.Invoke(Enums.ScoreTypeEnums.Money, _counter * 5);
+
+                PoolSignals.Instance.onGetObjectOnPosition?.Invoke(Enums.PoolEnums.Particle, Vector3.zero);
+                PoolSignals.Instance.onGetObjectOnPosition?.Invoke(Enums.PoolEnums.Particle2, Vector3.zero);
+                PoolSignals.Instance.onGetObjectOnPosition?.Invoke(Enums.PoolEnums.Particle3, Vector3.zero);
+                PoolSignals.Instance.onGetObjectOnPosition?.Invoke(Enums.PoolEnums.Particle4, Vector3.zero);
             }
         }
     }

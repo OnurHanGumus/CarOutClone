@@ -7,5 +7,8 @@ namespace Enums
     {
         Collectable,
         Particle,
+        Particle2,
+        Particle3,
+        Particle4,
     }
 }
