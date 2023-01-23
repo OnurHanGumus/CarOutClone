@@ -668,7 +668,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3640021674988768551, guid: 92782ee3ee917a248982d98d936df013, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.05
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3640021674988768551, guid: 92782ee3ee917a248982d98d936df013, type: 3}
       propertyPath: m_LocalPosition.z
@@ -707,12 +707,20 @@ PrefabInstance:
       value: OldMan
       objectReference: {fileID: 0}
     - target: {fileID: 6781195162873720381, guid: 92782ee3ee917a248982d98d936df013, type: 3}
+      propertyPath: _clipTo
+      value: 0.9999999403953552
+      objectReference: {fileID: 0}
+    - target: {fileID: 6781195162873720381, guid: 92782ee3ee917a248982d98d936df013, type: 3}
       propertyPath: _spline
       value: 
       objectReference: {fileID: 8927411445284308234}
     - target: {fileID: 6781195162873720381, guid: 92782ee3ee917a248982d98d936df013, type: 3}
       propertyPath: wrapMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6781195162873720381, guid: 92782ee3ee917a248982d98d936df013, type: 3}
+      propertyPath: _clipFrom
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6781195162873720381, guid: 92782ee3ee917a248982d98d936df013, type: 3}
       propertyPath: _result.size
@@ -737,6 +745,10 @@ PrefabInstance:
     - target: {fileID: 6781195162873720381, guid: 92782ee3ee917a248982d98d936df013, type: 3}
       propertyPath: _result.color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6781195162873720381, guid: 92782ee3ee917a248982d98d936df013, type: 3}
+      propertyPath: _result.percent
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6781195162873720381, guid: 92782ee3ee917a248982d98d936df013, type: 3}
       propertyPath: _finalResult.size
@@ -795,6 +807,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6781195162873720381, guid: 92782ee3ee917a248982d98d936df013, type: 3}
+      propertyPath: _finalResult.percent
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6781195162873720381, guid: 92782ee3ee917a248982d98d936df013, type: 3}
       propertyPath: _clipToSample.color.a
       value: 1
       objectReference: {fileID: 0}
@@ -812,7 +828,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6781195162873720381, guid: 92782ee3ee917a248982d98d936df013, type: 3}
       propertyPath: _clipToSample.percent
-      value: 1
+      value: 0.9999999403953552
       objectReference: {fileID: 0}
     - target: {fileID: 6781195162873720381, guid: 92782ee3ee917a248982d98d936df013, type: 3}
       propertyPath: _finalResult.forward.x
@@ -839,6 +855,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6781195162873720381, guid: 92782ee3ee917a248982d98d936df013, type: 3}
+      propertyPath: _clipFromSample.percent
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6781195162873720381, guid: 92782ee3ee917a248982d98d936df013, type: 3}
       propertyPath: _clipToSample.forward.x
       value: -0.0015558867
       objectReference: {fileID: 0}
@@ -860,7 +880,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6781195162873720381, guid: 92782ee3ee917a248982d98d936df013, type: 3}
       propertyPath: _clipToSample.position.z
-      value: -3.2620807
+      value: -3.2620804
       objectReference: {fileID: 0}
     - target: {fileID: 6781195162873720381, guid: 92782ee3ee917a248982d98d936df013, type: 3}
       propertyPath: _clipFromSample.forward.x
